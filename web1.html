@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/web1.css">
+</head>
+<body>
+    <div class="bigbox">
+        <div class="neiron"></div>
+        <!-- <div class="neiron"></div>
+        <div class="neiron"></div>
+        <div class="neiron"></div> -->
+    </div>
+</body>
+
+<script>
+    function $(name) {
+        return document.querySelector(name);
+    }
+
+    let num = 0;
+    $(".neiron").onmousedown = function(e) {
+        let x = e.offsetX;
+
+        $(".neiron").onmousemove = function(e) {
+            let move_x = e.offsetX;
+            num += (x - move_x)/20;
+
+            console.log(num)
+
+            if(num >= 1990) {
+                num = 0;
+                return ;
+            }else if(num <= 0) {
+                num = 1990;
+                return ;
+            }else {
+                $(".neiron").style.backgroundPosition = -num + "px";
+            }
+            
+            // this.style.backgroundPosition = -num + "px";
+        }
+
+        $(".neiron").onmouseup = function() {
+            
+            $(".neiron").onmousemove = null;
+            
+        }
+
+    }
+
+</script>
+</html>

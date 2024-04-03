@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/two.css">
+</head>
+<body>
+    <div class="bigbox">
+        <canvas class="bantoming"></canvas>
+        <div class="shubiao"></div>
+        <div class="text">擦擦擦，擦出一年好心情</div>
+
+        <div class="big_yuebing"></div>
+        <div class="alltext">
+            <ul>
+                <li><b>大作战 |</b></li>
+                <li><b>360 <sup>o</sup> |</b></li>
+                <li><b>值得去 |</b></li>
+                <li><b>直接达 |</b></li>
+                <li><b>吃小吃 </b></li>
+            </ul>
+            <!-- 小手鼠标 -->
+            <div class="shubiao_small"></div>
+        </div>
+        <!-- 三个饼干 -->
+        <div class="all_bg">
+            <div class="bg"></div>
+            <div class="bg"></div>
+            <div class="bg"></div>
+        </div>
+    </div>
+    
+</body>
+
+<script>
+    function $(name) {
+        return document.querySelector(name);
+    }
+    let shubiao = $(".shubiao");
+    let text = $(".text");
+    // 点击鼠标事件
+    shubiao.onclick = function() {
+        shubiao.style.opacity = "0";
+        text.style.opacity = "0";
+
+            setTimeout(function() {
+                shubiao.style.display = "none";
+                text.style.display = "none";
+                xiaochu();
+            } , 2000);
+
+    }
+
+    // 画布填充等操作
+    let canvas = $(".bantoming");
+    let ctx = canvas.getContext("2d");
+    ctx.fillStyle = "white";
+    ctx.fillRect(0 , 0 , 300 , 300);
+
+    // 消除功能
+    function xiaochu() {
+
+        // 鼠标按下
+        canvas.onmousedown = function() {
+            // 鼠标移动
+            canvas.onmousemove = function(e) {
+                ctx.clearRect(e.offsetX / 1.3 , e.offsetY / 4 , 50 , 20)
+                clearTimeout(canvas.timer)
+            };
+
+            // 鼠标抬起
+            canvas.onmouseup = function(e) {
+                canvas.onmousemove = null;
+                // 三秒后就让半透明页面消失
+                canvas.timer = setTimeout(function() {
+                    canvas.style.display = "none";
+                    // 时间到动画移入
+                    guiwei();
+                } , 3000);
+
+            };
+
+        };
+
+    };
+
+    // 动画移入
+   function guiwei() {
+
+    $(".big_yuebing").style.animation = "guiwei 3s forwards";
+    $(".all_bg").style.animation = "guiwei 3s forwards";
+
+        setTimeout(function() {
+            $(".alltext").style.animation = "guiwei 3s forwards";
+        } , 2000)
+
+        for(let i = 0 ; i <= $(".alltext").children[0].children.length - 1 ; i++) {
+
+            $(".alltext").children[0].children[i].onclick = function() {
+                location.replace("web" + i + ".html")
+            }
+
+        };
+        
+    };
+
+    // 判断是不是从前面的页面回来的
+    let isok = sessionStorage.getItem("val")
+    if(isok == 1) {
+        canvas.style.display = "none";
+        shubiao.style.display = "none";
+        text.style.display = "none";
+        guiwei()
+    }
+    
+</script>
+
+</html>

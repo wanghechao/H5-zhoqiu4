@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/web3.css">
+</head>
+<body>
+    <div class="bigbox">
+        <div class="reweb"></div>
+        <div class="neiron">
+            
+            <div class="shanhua"></div>
+        </div>
+        <div class="yuwubeij"></div>
+
+        <div class="zhoqiu_bj">
+        </div>
+    </div>
+</body>
+
+<script>
+    function $(name) {
+        return document.querySelector(name);
+    }
+
+    $(".reweb").onclick = function() {
+        location.replace("two.html")
+        sessionStorage.setItem("val" , 1);
+    }
+
+    $(".bigbox").onmousedown = function(e) {
+        
+        let daowei = e.offsetY - 100;
+        
+        $(".bigbox").onmousemove = function(e) {
+            let y = e.offsetY;
+            if(y <= daowei) {
+                shanhua_web()
+                $(".bigbox").onmousemove = null;
+            }
+            
+        }
+        $(".bigbox").onmouseup = function() {
+            $(".bigbox").onmousemove = null;
+        }
+    }
+
+    $(".zhoqiu_bj").onmousedown = function(e) {
+        let daowei2 = e.offsetY + 100;
+        $(".zhoqiu_bj").onmousemove = function(e) {
+            let y = e.offsetY;
+            if(y >= daowei2) {
+                xiahua_web()
+                $(".bigbox").onmousemove = null;
+            }
+
+        }
+        $(".zhoqiu_bj").onmouseup = function() {
+            $(".zhoqiu_bj").onmousemove = null;
+        }
+    }
+
+
+
+
+    // 上滑页面
+    function shanhua_web() {
+        $(".shanhua").style.display = "none";
+        $(".neiron").style.animation = "";
+
+        setTimeout(function() {
+            $(".neiron").style.animation = "neiron_fanda 3s forwards";
+        } , 100)
+
+        setTimeout(function() {
+            
+            $(".yuwubeij").style.display = "block";
+            $(".yuwubeij").style.animation = "neiron_fanda 5s .5s forwards";
+                setTimeout(function() {
+                    $(".zhoqiu_bj").style.display = "block";
+                    $(".zhoqiu_bj").style.animation = "zhoqiu_bj 3s forwards";
+                } , 5000)
+        } , 1000)
+    }
+
+
+
+    // 下滑页面
+    function xiahua_web() {
+        $(".zhoqiu_bj").style.animation = ""
+        $(".neiron").style.display = "none";
+        $(".yuwubeij").style.animation = "";
+        $(".neiron").style.animation = "";
+
+        setTimeout(function() {
+            
+            $(".zhoqiu_bj").style.animation = "zhoqiu_bj 3s forwards reverse";
+
+            setTimeout(function() {
+                $(".zhoqiu_bj").style.display = "none";
+
+                $(".yuwubeij").style.animation = "neiron_fanda 3s forwards reverse";
+
+                setTimeout(function() {
+                    $(".yuwubeij").style.display = "none";
+                    $(".neiron").style.display = "";
+                    $(".shanhua").style.display = "";
+                    $(".neiron").style.animation = "neiron_fanda 3s forwards reverse";
+                } , 2500);
+
+            } , 2500)
+
+        } , 100)
+           
+        
+    };
+</script>
+</html>

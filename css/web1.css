@@ -1,0 +1,48 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    
+    /* perspective: 100px; */
+}
+
+.bigbox {
+    width: 400px;
+    height: 600px;
+    position: relative;
+    
+    /* transform-style: preserve-3d; */
+}
+
+
+.neiron {
+    position: absolute;
+    width: 400px;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: url(../img/web1/背景.png)  0px/900% no-repeat;
+    border: 1px solid black;
+}
+/* 
+.bigbox :nth-child(1) {
+    transform: translateZ(0);
+}
+
+.bigbox :nth-child(2) {
+    transform: rotateY(64deg) translateZ(300px) scale(2);
+}
+
+.bigbox :nth-child(3) {
+    transform: rotateY(286deg) translateZ(300px) scale(2);
+}
+
+.bigbox :nth-child(4) {
+    transform: rotateY(360deg) translateZ(300px);
+} */

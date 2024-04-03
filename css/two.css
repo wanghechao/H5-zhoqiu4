@@ -1,0 +1,171 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bigbox {
+    position: relative;
+    width: 400px;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: url(../img/neiron2/背景.png) 100%/100% no-repeat;
+    overflow: hidden;
+}
+
+.bantoming {
+    width: 100%;
+    height: 100%;
+    opacity: .5;
+    cursor: pointer;
+}
+
+.shubiao {
+    position: absolute;
+    top: 20%;
+    width: 15%;
+    height: 15%;
+    background: url(../img/neiron2/鼠标手.png) 100%/100% no-repeat;
+    transform-origin: center bottom;
+    animation: shubiao 3s linear alternate infinite;
+    cursor: pointer;
+    transition: all 2s;
+}
+
+@keyframes shubiao {
+    0%{
+        transform: rotate(0);
+    }
+    50%{
+        transform: rotate(10deg);
+    }
+    100%{
+        transform: rotate(-10deg);
+    }
+}
+
+.text {
+    position: absolute;
+    width: 60%;
+    height: 5%;
+    text-align: center;
+    color: white;
+    font-size: 13px;
+    transform: translate(0px , -20px);
+    transition: all 2s;
+}
+
+.big_yuebing {
+    transform: translate(300px , 0);
+    position: absolute;
+    width: 50%;
+    height: 40%;
+    top: 10%;
+    background: url(../img/neiron2/中秋月饼.png) 100%/100% no-repeat;
+}
+
+.alltext {
+    position: absolute;
+    width: 80%;
+    height: 10%;
+    text-align: center;
+    line-height: 30px;
+    color: white;
+    top: 55%;
+    transform: translate(350px , 0);
+}
+
+.alltext ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+}
+
+.alltext ul :nth-child(2) {
+    line-height: 22px;
+}
+
+.alltext ul li {
+    cursor: pointer;
+}
+
+.shubiao_small {
+    position: absolute;
+    transform: translate( 5px , 0);
+    top: 20%;
+    width: 13%;
+    height: 100%;
+    background: url(../img/neiron2/小手鼠标.png) 100%/100% no-repeat;
+    animation: shubiao_small 5s alternate infinite;
+}
+
+@keyframes shubiao_small {
+    0%{
+        transform: translate(5px , 0) scale(0.8);
+    }
+    25%{
+        transform: translate(70px , 0) ;
+    }
+    50%{
+        transform: translate(140px , 0) scale(0.8);
+    }
+    75%{
+        transform: translate(210px , 0);
+    }
+    100%{
+        transform: translate(280px , 0) scale(0.8);
+    }
+}
+
+.all_bg {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 30%;
+    transform: translate(400px , 0);
+}
+
+.all_bg .bg {
+    position: absolute;
+    width: 30%;
+    height: 40%;
+}
+
+.all_bg :nth-child(1) {
+    bottom: -10px;
+    width: 25%;
+    height: 60%;
+    background: url(../img/neiron2/大饼干.png) 100%/100% no-repeat;
+}
+
+.all_bg :nth-child(2) {
+    width: 20%;
+    height: 50%;
+    right: 20%;
+    bottom: 0;
+    background: url(../img/neiron2/中饼干.png) 100%/100% no-repeat;
+}
+
+.all_bg :nth-child(3) {
+    width: 15%;
+    height: 40%;
+    right: 10%;
+    background: url(../img/neiron2/小饼干.png) 100%/100% no-repeat;
+}
+
+@keyframes guiwei{
+    0%{
+        transform: translate(400px , 0);
+    }
+    100%{
+        transform: translate(0);
+    }
+}

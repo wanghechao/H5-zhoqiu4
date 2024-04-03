@@ -1,0 +1,257 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+}
+
+.bigbox {
+    width: 400px;
+    height: 600px;
+    overflow: hidden;
+}
+
+
+.neiron {
+    position: relative;
+    width: 400px;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: url(../img/neiron6/背景.png) 100%/100% no-repeat;
+    animation: neiron_anima 1s linear forwards;
+}
+
+@keyframes neiron_anima{
+    0%{
+        transform: translate(300px , 0);
+    }
+    100%{
+        transform: translate(0);
+    }
+}
+
+.reweb {
+    position: absolute;
+    top: 2%;
+    right: 5%;
+    width: 15%;
+    height: 5%;
+    background: url(../img/neiron4/返回.png) 100%/100% no-repeat;
+    cursor: pointer;
+    z-index: 99;
+}
+
+.dl {
+    position: absolute;
+    top: 0%;
+    width: 90%;
+    height: 30%;
+    background: url(../img/neiron6/俩灯笼.png) 100%/100% no-repeat;
+}
+
+.all_fs {
+    position: absolute;
+    top: 11%;
+    width: 90%;
+    height: 5%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.djs {
+    width: 13%;
+    height: 100%;
+    text-align: center;
+    color: white;
+}
+
+.defen {
+    width: 13%;
+    height: 100%;
+    text-align: center;
+    color: white;
+}
+
+.allyh {
+    position: absolute;
+    bottom: 20%;
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.allyh :nth-child(1) {
+    position: absolute;
+    bottom: -15%;
+    left: 0%;
+    width: 50%;
+    height: 100%;
+    background: url(../img/neiron6/樱花2.png) left 40%/40% no-repeat;
+    animation: yh_anima 2s linear infinite alternate;
+}
+
+.allyh :nth-child(2) {
+    position: absolute;
+    right: 10%;
+    width: 50%;
+    height: 100%;
+    background: url(../img/neiron6/樱花1.png)  100%/100% no-repeat;
+    animation: yh_anima 2s linear .5s infinite alternate;
+}
+
+@keyframes yh_anima {
+    0%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+
+.xiatiao {
+    position: absolute;
+    bottom: 5%;
+    width: 80%;
+    height: 3px;
+    background: goldenrod;
+}
+
+.yuebingbj {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+}
+
+.xiayuebing {
+    position: absolute;
+    bottom: -4%;
+    width: 35%;
+    height: 25%;
+    background: url(../img/neiron6/下面接收月饼.png) 100%/100% no-repeat;
+}
+
+.all_wuping {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    top: -11%;
+}
+
+.wuping {
+    width: 15%;
+    height: 10%;
+    transform: translate(0 , 0px);
+    top: 0;
+    position: absolute;
+}
+
+.all_wuping :nth-child(1) {
+    left: 0%;
+}
+.all_wuping :nth-child(2) {
+    left: 20%;
+}
+.all_wuping :nth-child(3) {
+    left: 40%;
+}
+.all_wuping :nth-child(4) {
+    left: 60%;
+}
+.all_wuping :nth-child(5) {
+    left: 80%;
+    
+}
+
+@keyframes wuping_anima {
+    0%{
+        top: 0;
+    }
+    100%{
+        top: 100%;
+    }
+}
+
+
+/* 游戏结束页面css---------------------------- */
+
+
+.game_over {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url(../img/neiron6/游戏结束页面.png) 100%/100% no-repeat;
+    animation: game_over 1s forwards;
+}
+
+@keyframes game_over{
+    0%{
+        transform: scale(0);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+
+.jianbei {
+    position: absolute;
+    left: 40%;
+    bottom: 40%;
+    width: 20%;
+    height: 20%;
+    background: url(../img/neiron6/奖杯.png) 100%/100% no-repeat;
+    animation: up_anima 3s forwards;
+}
+
+.heka {
+    position: absolute;
+    left: 20%;
+    bottom: 15%;
+    width: 60%;
+    height: 20%;
+    background: url(../img/neiron6/贺卡.png) 100%/100% no-repeat;
+    animation: up_anima 3s forwards;
+}
+
+.regame {
+    display: none;
+    position: absolute;
+    left: 35%;
+    bottom: 8%;
+    width: 30%;
+    height: 6%;
+    background: url(../img/neiron6/在玩一次.png) 100%/100% no-repeat;
+    animation: up_anima 3s forwards;
+    cursor: pointer;
+    z-index: 99;
+}
+
+.zuizhon_defen {
+    position: absolute;
+    width: 15%;
+    height: 10%;
+    left: 42%;
+    top: 35%;
+    text-align: center;
+    color: gold;
+    font-size: 30px;
+}
+
+@keyframes up_anima {
+    0% {
+        transform: translate(0 , 50px);
+        opacity: 0;
+    }
+    100%{
+        transform: translate(0);
+        opacity: 1;
+    }
+}

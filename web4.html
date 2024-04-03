@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/web4.css">
+</head>
+<body>
+    <div class="bigbox">
+        <div class="reweb"></div>
+        <div class="neiron">
+            
+            <div class="text"><b>请输入正确的顺序</b></div>
+
+            <div class="all_xuanzhe">
+                <div class="xuanzhe"></div>
+                <div class="xuanzhe"></div>
+                <div class="xuanzhe"></div>
+                <div class="xuanzhe"></div>
+            </div>
+
+            <div class="yes_no">
+                <div class="yesno"></div>
+                <div class="yesno"></div>
+            </div>
+        </div>
+
+        <div class="neiron2">
+            
+            <div class="shiping"><video src="media/月饼的由来.mp4" controls = "true"  width="100%" height="100%" autoplay="autoplay" ></video></div>
+        </div>
+    </div>
+</body>
+
+<script>
+    function $(name) {
+        return document.querySelector(name);
+    }
+
+    $(".reweb").onclick = function() {
+        location.replace("two.html")
+        sessionStorage.setItem("val" , 1);
+    }
+
+    // 答题功能
+    let arr = [];
+    for(let i = 0 ; i <= $(".all_xuanzhe").children.length - 1; i++) {
+        $(".all_xuanzhe").children[i].onclick = function() {
+            if(i === 0) {
+                arr.push("乐")
+            }else if(i === 1) {
+                arr.push("秋")
+            }else if(i === 2) {
+                arr.push("中")
+            }else if(i === 3) {
+                arr.push("快")
+            }
+
+            for(let j = 0 ; j <= arr.length ; j++) {
+                if(j == 1) {
+                     $(".text").innerHTML = "*";
+                }else if (j == 2) {
+                    $(".text").innerHTML = "**";
+                }
+                else if (j == 3) {
+                    $(".text").innerHTML = "***";
+                }
+                else if (j == 4) {
+                    $(".text").innerHTML = "****";
+                }
+               
+            }
+        }
+    }
+
+    // 确认与取消按钮功能
+    for(let q = 0 ; q < $(".yes_no").children.length ; q++) {
+        $(".yes_no").children[q].onclick = function() {
+            if(q === 0) {
+                arr = [];
+                $(".text").innerHTML = "请输入正确的顺序";
+            }else if(q === 1) {
+                
+                if(arr[0] == "中" && arr[1] == "秋" && arr[2] == "快" && arr[3] == "乐") {
+                    $(".neiron").style.display = "none";
+                    $(".neiron2").style.display = "block";
+                }else{
+                    $(".text").innerHTML = "输入错误";
+                    arr = [];
+                    setTimeout(function() {
+                        $(".text").innerHTML = "请输入正确的顺序";
+                    } , 1500)
+                }
+
+            }
+        }
+    }
+</script>
+</html>

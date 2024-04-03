@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/game.css">
+    
+</head>
+<body>
+    <div class="bigbox">
+        <div class="neiron">
+            <div class="reweb"></div>
+            <div class="dl"></div>
+            <div class="all_fs">
+                <div class="djs">18</div>
+                <div class="defen">0</div>
+            </div>
+            <div class="allyh">
+                <div class="yh"></div>
+                <div class="yh"></div>
+            </div>
+
+            <div class="all_wuping">
+                <div class="wuping"></div>
+                <div class="wuping"></div>
+                <div class="wuping"></div>
+                <div class="wuping"></div>
+                <div class="wuping"></div>
+            </div>
+
+            <div class="xiatiao"></div>
+            <div class="yuebingbj"></div>
+            <div class="xiayuebing"></div>
+
+            <div class="game_over">
+                <div class="jianbei"></div>
+                <div class="heka"></div>
+                <div class="zuizhon_defen">0</div>
+                
+            </div>
+
+            <div class="regame"></div>
+        </div>
+    </div>
+
+
+</body>
+
+    <script>
+        function $(name) {
+            return document.querySelector(name);
+        }
+        
+
+        $(".yuebingbj").onmousemove = function (e) {
+            
+            if(e.offsetX >= 260 || e.offsetX <= 0) {
+                return ;
+            }else {
+                $(".xiayuebing").style.left = e.offsetX + "px";
+
+            }
+            
+        }
+
+        $(".reweb").onclick = function() {
+            location.replace("two.html");
+            sessionStorage.setItem("val" , 1);
+        }
+        
+
+        // 游戏各种功能代码
+            // 数字放入数组
+            function shuju(num) {
+                let arr = [];
+                
+                for(let j = 0 ; j <= num  ; j++) {
+                   arr.push(j);
+                }
+
+                return arr;
+
+            }
+            // 打乱数组
+            function rand(arr) {
+                
+                for(let a = 0 ; a < arr.length  ; a++) {
+
+                   let rand = Math.floor(Math.random() * a);
+                   let temp = arr[rand];
+                   arr[rand] = arr[a];
+                   arr[a] = temp;
+
+                }
+
+                return arr;
+            }
+
+            // 根据打乱的数组渲染图片
+            function diaoluo(start , end , rand_arr) {
+
+                for(let i = start ; i <= end ; i++) {
+                    $(".all_wuping").children[i].style.background = "url(img/neiron6/w" + rand_arr[i] + ".png) 100%/100% no-repeat";
+                    
+                };
+
+            };
+
+            let defen_val = 0;
+            let djs_time = 18;
+
+                
+
+            // 碰撞
+            function penzhuan(foods , foods2) {
+                let l = foods.offsetLeft;
+                let r = foods.offsetLeft + foods.offsetWidth;
+                let t = foods.offsetTop;
+
+                let l2 = foods2.offsetLeft;
+                let r2 = foods2.offsetLeft + foods2.offsetWidth;
+                let b2 = foods2.offsetTop + foods2.offsetHeight;
+
+                if(l > r2 || r < l2 || b2 < t) {
+                    console.log("没碰到")
+                }
+                else {
+                    console.log("碰到了")
+                        if(foods2.style.background == 'url("img/neiron6/w0.png") 100% center / 100% no-repeat' || foods2.style.background == 'url("img/neiron6/w1.png") 100% center / 100% no-repeat') {
+                            djs_time += 5;
+                            $(".djs").innerHTML = djs_time;
+                        }else if(foods2.style.background == 'url("img/neiron6/w2.png") 100% center / 100% no-repeat' || foods2.style.background == 'url("img/neiron6/w3.png") 100% center / 100% no-repeat') {
+                            defen_val += 5;
+                            $(".defen").innerHTML = defen_val;
+                        }else {
+                            djs_time -= 5;
+                            $(".djs").innerHTML = djs_time;
+                        }
+                    
+                }
+            };
+            
+            game_time = setInterval(function() {
+
+                for(let i = 0 ; i < 5 ; i++) {
+                     penzhuan($(".xiayuebing") , $(".all_wuping").children[i]);
+                }
+                
+                djs_time--;
+                $(".djs").innerHTML = djs_time;
+                if(djs_time <= 0) {
+                    $(".zuizhon_defen").innerHTML = defen_val;
+                    $(".game_over").style.display = "block";
+                    $(".regame").style.display = "block";
+                    clearInterval(game_time)
+                }
+
+            } , 1000);
+
+            // 游戏动画
+            game()
+            function game() {
+                let arrshuju = shuju(4);
+                let randshuju = rand(arrshuju);
+                // ----------------------------------
+                diaoluo(0 , 4 , randshuju);
+
+                let num = 0;
+                    setInterval(function() {
+                        
+                        // 随机让物品落下
+                        let ran = Math.floor(Math.random() * 5);
+                        $(".all_wuping").children[ran].style.animation = "wuping_anima 2s linear";
+
+                        if(num >= 5) {
+                            let arrshuju = shuju(4);
+                            let randshuju = rand(arrshuju);
+                            // ----------------------------------
+                            diaoluo(0 , 4 , randshuju);
+
+                            for(let j = 0 ; j <= 4 ; j++) {
+                                
+                                $(".all_wuping").children[j].style.animation = "";
+                            }
+                            num = 0;
+                        }
+                        num++;
+
+                    } , 2000); 
+
+
+                    
+            $(".regame").onclick = function() {
+                location.reload();
+            }
+            }
+        // 游戏各种功能代码
+        
+    </script>
+</html>

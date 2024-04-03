@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/web0.css">
+</head>
+<body>
+    <div class="bigbox">
+        <div class="neiron">
+            <div class="reweb"></div>
+            <div class="dl"></div>
+
+            <div class="all_text">
+                <div class="text"></div>
+                <div class="text"></div>
+            </div>
+
+            <div class="guizhe_btn"></div>
+            <div class="start"></div>
+
+            <!-- 规则页面带按钮 -->
+            <div class="guizhe_yemian">
+                <!-- 规则子页面 -->
+                <div class="guizhe">
+                    <div class="alltop_text">
+                        <div class="top_text"></div>
+                        <div class="top_text"></div>
+                        <div class="top_text"></div>
+                        <div class="top_text"></div>
+                        <div class="top_text"></div>
+                    </div>
+                    <!-- 游戏作战规则文字 -->
+                    <div class="guizhe_text"></div>
+
+                    <div class="neiron_text">
+                        1. 接到掉落得月饼，则每个月饼加 5 分。如果未接到掉落得月饼，则不加分；<br>
+                        2. 接到掉落的红包，则每个红包加 5 秒。如果未接到掉落的红包，则不加秒；<br>
+                        3. 接到掉落的炸弹，则每个炸弹减 5 分。如果未接到掉落的炸弹，则不扣分</div>
+                    <div class="neiron_text2">
+                        1.每次开始游戏，倒计时都从 18 秒开始计时<br>
+                        2.每次开始游戏，得分都从 0 分开始增加<br>
+                        3.接到任何物体，物体消失。物体消失后，显示加分“5 分”、“加 5 秒”、“减
+                        5 分”字样。
+                    </div>
+
+                    <div class="tiao1"></div>
+                    <div class="tiao2"></div>
+                </div>
+                <!-- 了解按钮 -->
+                <div class="liaojie_btn"></div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<script>
+    function $(name) {
+        return document.querySelector(name);
+    }
+
+    $(".reweb").onclick = function() {
+        location.replace("two.html")
+        sessionStorage.setItem("val" , 1);
+    }
+
+    for(let i = 0 ; i <= $(".alltop_text").children.length - 1 ; i++) {
+        $(".alltop_text").children[i].style.background = "url(img/neiron5/t" + i + ".png) 80%/80% no-repeat";
+        $(".alltop_text").children[i].style.animation = "top_text_anima 2s linear " + i + "s forwards ";
+    }
+    
+    $(".liaojie_btn").onclick = function() {
+        location.replace("gameweb.html")
+    }
+
+    $(".guizhe_btn").onclick = function() {
+        $(".guizhe_yemian").style.display = "block";
+        $(".guizhe_btn").style.display = "none";
+    }
+    $(".start").onclick = function() {
+        location.replace("gameweb.html")
+    }
+</script>
+</html>

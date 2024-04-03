@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/web2.css">
+</head>
+<body>
+    <div class="bigbox">
+        <div class="neiron">
+            <div class="reweb"></div>
+            <div class="all_mhtp">
+                <div class="mhtp"></div>
+                <div class="mhtp"></div>
+                <div class="mhtp"></div>
+            </div>
+            <div class="tp_text">
+                <div class="text"></div>
+                <div class="text"></div>
+                <div class="text"></div>
+            </div>
+
+            <div class="all_tp">
+                <div class="tp"></div>
+                <div class="tp"></div>
+                <div class="tp"></div>
+            </div>
+            
+            <div class="dianzan">
+                <div class="aixingcishu">0</div>
+                <div class="aixing"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    function $(name) {
+        return document.querySelector(name);
+    }
+
+    $(".reweb").onclick = function() {
+        location.replace("two.html")
+        sessionStorage.setItem("val" , 1);
+    }
+
+    tp()
+    function tp() {
+        
+        for(let i = 0 ; i <= $(".all_tp").children.length - 1 ; i++) {
+            $(".all_tp").children[i].style.background = "url(img/web2/第" + i + "场景.png) 100%/100% no-repeat";
+            // 点击事件
+            $(".all_tp").children[i].onclick = function() {
+                for(let i = 0 ; i <= $(".all_tp").children.length - 1 ; i++) {
+                    $(".all_tp").children[i].style.visibility = "hidden";
+                    
+                }
+                this.style.visibility = "visible";
+                this.style.animation = "tp_anima" + i + " 4s forwards";
+                this.style.zIndex = "3";
+
+                $(".all_mhtp").style.display = "block";
+                $(".all_mhtp").children[i].style.display = "block";
+                $(".tp_text").children[i].style.animation = "text_anima 3s 2s forwards";
+
+                $(".dianzan").style.display = "block";
+            }
+            // 点击事件
+
+            $(".all_mhtp").children[i].style.background = "url(img/web2/模糊背景" + i + ".png) 100%/100% no-repeat";
+            $(".tp_text").children[i].style.background = "url(img/web2/文字" + i + ".png) 100%/100% no-repeat";
+        }
+
+        let num = 0;
+        $(".dianzan").children[1].onclick = function() {
+            num++;
+            $(".dianzan").children[0].innerHTML = num;
+        }
+        
+    }
+</script>
+</html>

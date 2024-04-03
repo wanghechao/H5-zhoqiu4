@@ -1,0 +1,150 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bigbox {
+    width: 400px;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background: url(../img/neiron1/背景.png) 100%/100% no-repeat;
+}
+
+.text {
+    position: absolute;
+    top: 20%;
+    width: 60%;
+    height: 30%;
+    background: url(../img/neiron1/中秋文字.png) 100%/100% no-repeat;
+    animation: text 3s forwards;
+}
+
+@keyframes text {
+    0%{
+        transform: scale(0);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+
+.bg{
+    position: absolute;
+    transform: translate(-150px , 20px);
+    width: 10%;
+    height: 10%;
+    background: url(../img/neiron1/进度条小饼干.png) 100%/100% no-repeat;
+    animation: bg 6s linear 1s forwards;
+}
+
+@keyframes bg{
+    0%{
+        transform: translate(-150px , 20px);
+    }
+    100%{
+        transform: translate(100px , 20px);
+    }
+}
+
+.jdt_text {
+    position: absolute;
+    top: 51%;
+    right: 10%;
+    width: 10%;
+    height: 5%;
+    text-align: center;
+    font-size: 20px;
+    color: white;
+    animation: jdt_text 6s linear 1s forwards;
+    transform: translate(-250px , 0px);
+}
+
+@keyframes jdt_text {
+    0%{
+        transform: translate(-250px , 0px);
+    }
+    100%{
+        transform: translate(0px , 0px);
+    }
+}
+
+.jdt {
+    position: absolute;
+    bottom: 40%;
+    width: 80%;
+    height: 3%;
+    background: url(../img/neiron1/进度条外框.png) 100%/100% no-repeat;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 40%;
+}
+
+.jdt_inside {
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    background: url(../img/neiron1/进度条.png) 100%/100% no-repeat;
+    animation: jdt 7s linear ;
+}
+
+@keyframes jdt {
+    0%{
+        transform: translate(-330px , 0px);
+    }
+    100%{
+        transform: translate(0px , 0px);
+    }
+}
+
+.allhondian {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hondian {
+    width: 14px;
+    height: 14px;
+    background: rgb(203, 40, 40);
+    border-radius: 50%;
+}
+
+.allhondian :nth-child(1) {
+    transform: translate(-130px , -70px);
+}
+
+.allhondian :nth-child(2) {
+    transform: translate(0px , -130px);
+}
+
+.allhondian :nth-child(3) {
+    transform: translate(180px , -50px);
+}
+
+.allhondian :nth-child(4) {
+    transform: translate(60px , 70px) scale(0.8);
+}
+
+@keyframes hondian {
+    0%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
